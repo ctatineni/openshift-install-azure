@@ -40,7 +40,7 @@ resource "azurerm_subnet" "master_subnet" {
   address_prefix       = local.master_subnet_cidr
   virtual_network_name = local.virtual_network
   name                 = "${var.cluster_id}-master-subnet"
-  #service_endpoints    = local.private ? local.airgapped_service_endpoints : []
+  service_endpoints    = local.private ? local.airgapped_service_endpoints : []
 
   lifecycle {
     ignore_changes = [
@@ -54,7 +54,7 @@ resource "azurerm_subnet" "worker_subnet" {
   address_prefix       = local.worker_subnet_cidr
   virtual_network_name = local.virtual_network
   name                 = "${var.cluster_id}-worker-subnet"
-  #service_endpoints    = local.private ? local.airgapped_service_endpoints : []
+  service_endpoints    = local.private ? local.airgapped_service_endpoints : []
 
   lifecycle {
     ignore_changes = [

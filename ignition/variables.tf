@@ -14,6 +14,10 @@ variable "cluster_network_cidr" {
   type = string
 }
 
+variable "openshift_pull_secret_json" {
+  type = string
+}
+
 variable "cluster_network_host_prefix" {
   type = string
 }

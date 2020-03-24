@@ -12,7 +12,7 @@
 .DS_Store
 
 # openshift pull-secret
-pull-secret
+pull-secret*
 
 # local
 makefile

@@ -61,6 +61,12 @@ variable "azure_image_url" {
   default     = "https://rhcos.blob.core.windows.net/imagebucket/rhcos-42.80.20191002.0.vhd"
 }
 
+
+variable "openshift_pull_secret_json" {
+  type    = string
+  default = "pull-secret"
+}
+
 variable "azure_subscription_id" {
   type        = string
   description = "The subscription that should be used to interact with Azure API"
