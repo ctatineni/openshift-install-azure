@@ -563,6 +563,31 @@ resource "local_file" "configure-image-registry-job" {
   ]
 }
 
+data "template_file" "private-cluster-outbound-service" {	
+  count    = var.private ? 1 : 0	
+  template = <<EOF	
+apiVersion: v1	
+kind: Service	
+metadata:	
+  namespace: openshift-config-managed	
+  name: outbound-provider	
+spec:	
+  type: LoadBalancer	
+  ports:	
+  - port: 27627	
+EOF	
+}	
+
+resource "local_file" "private-cluster-outbound-service" {	
+  count    = var.private ? 1 : 0	
+  content  = element(data.template_file.private-cluster-outbound-service.*.rendered, count.index)	
+  filename = "${local.installer_workspace}/openshift/99_private-cluster-outbound-service.yaml"	
+  depends_on = [	
+    null_resource.download_binaries,	
+    null_resource.generate_manifests,	
+  ]	
+}
+
 
 data "template_file" "airgapped_registry_upgrades" {
   count    = var.airgapped["enabled"] ? 1 : 0
