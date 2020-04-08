@@ -27,6 +27,7 @@ platform:
   azure:
     baseDomainResourceGroupName: ${var.azure_dns_resource_group_name}
     region: ${var.azure_region}
+publish: Internal
 pullSecret: '${chomp(file(var.openshift_pull_secret))}'
 sshKey: '${var.public_ssh_key}'
 %{if var.airgapped["enabled"]}imageContentSources:
