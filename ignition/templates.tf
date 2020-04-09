@@ -571,7 +571,9 @@ apiVersion: v1
 kind: Service	
 metadata:	
   namespace: openshift-config-managed	
-  name: outbound-provider	
+  name: outbound-provider
+  annotations:
+    service.beta.kubernetes.io/azure-load-balancer-internal: "true"
 spec:	
   type: LoadBalancer	
   ports:	
