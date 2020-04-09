@@ -565,7 +565,8 @@ resource "local_file" "configure-image-registry-job" {
 
 data "template_file" "private-cluster-outbound-service" {	
   count    = var.private ? 1 : 0	
-  template = <<EOF	
+  template = <<EOF
+---
 apiVersion: v1	
 kind: Service	
 metadata:	
