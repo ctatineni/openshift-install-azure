@@ -60,7 +60,7 @@ resource "azurerm_dns_srv_record" "etcd_cluster" {
     for_each = azurerm_dns_a_record.etcd_a_nodes.*.name
     iterator = name
     content {
-      target   = "${name.value}.${azurerm_dns_zone.private.name}"
+      target   = "${name.value}.${azurerm_private_dns_zone.private.name}"
       priority = 10
       weight   = 10
       port     = 2380
