@@ -163,6 +163,10 @@ variable "base_domain" {
   type = string
 }
 
+variable "main_rg" {
+  type = string
+}
+
 variable "openshift_version" {
   type    = string
   default = "latest"
