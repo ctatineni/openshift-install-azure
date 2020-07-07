@@ -146,9 +146,7 @@ module "dns" {
 
 
 resource "azurerm_resource_group" "main" {
-  name     = "${local.cluster_id}-rg"
-  location = var.azure_region
-  tags     = local.tags
+  name     = var.main_rg
 }
 
 resource "azurerm_storage_account" "cluster" {
